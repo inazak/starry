@@ -95,7 +95,7 @@ func TestStackOp(t *testing.T) {
   out := &bytes.Buffer{}
   vm.SetStdout(out)
 
-  result := vm.Run()
+  result, _ := vm.Run()
 
   if result != 0 {
     t.Fatalf("VM return code expected=%d, got=%d", 0, result)
@@ -128,7 +128,7 @@ func TestJumpOp(t *testing.T) {
   out := &bytes.Buffer{}
   vm.SetStdout(out)
 
-  result := vm.Run()
+  result, _ := vm.Run()
 
   if result != 0 {
     t.Fatalf("VM return code expected=%d, got=%d", 0, result)
@@ -152,7 +152,7 @@ func TestNumberInputOp(t *testing.T) {
   vm.SetStdin(in)
   vm.SetStdout(out)
 
-  result := vm.Run()
+  result, _ := vm.Run()
 
   if result != 0 {
     t.Fatalf("VM return code expected=%d, got=%d", 0, result)
@@ -175,7 +175,7 @@ func TestCharInputOp(t *testing.T) {
   vm.SetStdin(in)
   vm.SetStdout(out)
 
-  result := vm.Run()
+  result, _ := vm.Run()
 
   if result != 0 {
     t.Fatalf("VM return code expected=%d, got=%d", 0, result)
@@ -212,7 +212,7 @@ func TestHelloWorld(t *testing.T) {
   vm  := NewVM(inst, label)
   vm.SetStdout(buf)
 
-  result := vm.Run()
+  result, _ := vm.Run()
 
   if result != 0 {
     t.Fatalf("VM return code expected=%d, got=%d", 0, result)

@@ -85,17 +85,16 @@ func (v *VM) SetStdout(w io.Writer) {
   v.Stdout = w
 }
 
-func (v *VM) Run() int {
+func (v *VM) Run() (int, error) {
 
   for len(v.Inst) > v.PC {
     err := v.step()
     if err != nil {
-      fmt.Printf("VM Runtime Error: %v\n", err)
-      return 1
+      return 1, err
     }
   }
 
-  return 0
+  return 0, nil
 }
 
 func (v *VM) push(value int) {
