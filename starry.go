@@ -27,7 +27,6 @@ type OutputN struct {}
 type OutputC struct {}
 type InputN  struct {}
 type InputC  struct {}
-type Debug   struct {}
 
 func (i Nop)     Decode() string { return "nop" }
 func (i Push)    Decode() string { return fmt.Sprintf("push %d", i.Value) }
@@ -46,7 +45,6 @@ func (i OutputN) Decode() string { return "output number" }
 func (i OutputC) Decode() string { return "output character" }
 func (i InputN)  Decode() string { return "input number" }
 func (i InputC)  Decode() string { return "input character" }
-func (i Debug)   Decode() string { return "debug print" }
 
 type VMError struct {
   m string
@@ -92,6 +90,19 @@ func (v *VM) Run() (int, error) {
     if err != nil {
       return 1, err
     }
+  }
+
+  return 0, nil
+}
+
+func (v *VM) RunWithDebug() (int, error) {
+
+  for len(v.Inst) > v.PC {
+    err := v.step()
+    if err != nil {
+      return 1, err
+    }
+    fmt.Fprintf(os.Stderr, "[Debug] Stack=%v PC=%v\n", v.Stack, v.PC)
   }
 
   return 0, nil
@@ -238,8 +249,6 @@ func (v *VM) step() (err error) {
       var i int
       fmt.Fscanf(v.Stdin, "%c", &i)
       v.push(i)
-    case Debug:
-      fmt.Fprintf(os.Stderr, "[Debug] Stack=%v PC=%v\n", v.Stack, v.PC)
     default:
       panic(VMError{m:"unknown instruction", p:v.PC})
   }

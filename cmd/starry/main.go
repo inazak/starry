@@ -16,15 +16,19 @@ Usage:
 
   OPTION:
     -i or -inst  ... print instruction code.
+    -d or -debug ... run with debug print.
 `
 
-var optionsInst bool
+var optionsInst  bool
+var optionsDebug bool
 
 func main() {
 
   // options parse
-  flag.BoolVar(&optionsInst, "inst", false, "print decoded instruction code.")
-  flag.BoolVar(&optionsInst, "i",    false, "print decoded instruction code.")
+  flag.BoolVar(&optionsInst,  "inst",  false, "print decoded instruction code.")
+  flag.BoolVar(&optionsInst,  "i",     false, "print decoded instruction code.")
+  flag.BoolVar(&optionsDebug, "debug", false, "run with debug print.")
+  flag.BoolVar(&optionsDebug, "d",     false, "run with debug print.")
   flag.Parse()
 
   if len(flag.Args()) != 1 {
@@ -58,7 +62,14 @@ func main() {
 
   vm := starry.NewVM(insts, label)
 
-  result, err := vm.Run()
+  var result int
+
+  if optionsDebug {
+    result, err = vm.RunWithDebug()
+  } else {
+    result, err = vm.Run()
+  }
+
   if result != 0 {
     fmt.Printf("VM Runtime Error: %v\n", err)
     os.Exit(1)
