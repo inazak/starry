@@ -15,7 +15,7 @@ Usage:
   starry [OPTION] SOURCEFILE
 
   OPTION:
-    -i or -inst  ... print decoded instruction code.
+    -i or -inst  ... print instruction code.
 `
 
 var optionsInst bool
