@@ -4,9 +4,8 @@ Starry is a stack-based (esoteric) programming language.
 See also [esolangs pages](https://esolangs.org/wiki/Starry).
 
 Starryとは『Rubyで作る奇妙なプログラミング言語』で説明されている、
-きらめく星空のようなスタックベースのオリジナル言語。
-
-使用する文字は `+*.,\`'` とスペースのみで、他は無視される。
+「きらめく星空のような」スタックベースのオリジナル言語。
+使用する文字は `+*.,``'` とスペースのみで、他は無視される。
 文字の前のスペースの数で命令の種類を決定する。
 詳しくは [esolangs pages](https://esolangs.org/wiki/Starry) を参照。
 
