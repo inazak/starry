@@ -18,6 +18,7 @@ Usage:
 
   OPTION:
     -i or -inst  ... print instruction code.
+    -d or -debug ... run with debug print.
 ```
 
 
