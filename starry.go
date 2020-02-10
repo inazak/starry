@@ -193,6 +193,7 @@ func (v *VM) jumpnz(addr int) {
 
 func (v *VM) step() (err error) {
 
+  // capture VMError from panic
   defer func() {
     if rec := recover(); rec != nil {
       if _, ok := rec.(VMError); ok {
