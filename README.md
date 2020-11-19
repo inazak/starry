@@ -32,6 +32,7 @@ Usage:
 
 Hello World
 ```
+$ cat helloworld.txt
             +               +  *       +    
  * + .        +              +  *       +   
   *     * + .            +     * + . + .    
@@ -42,6 +43,7 @@ Hello World
 + .           + * + .             + * + .   
            +            +  *         +     *
  * + .
+$
 ```
 
 Result
@@ -52,9 +54,11 @@ Hello, world!
 
 Print up to 10th Fibonacci number
 ```
+$ cat fibonacci.txt
       +     +               +       `
    + +   +     * +  .               +
  .   +   +      + * +       '
+$
 ```
 
 Result
