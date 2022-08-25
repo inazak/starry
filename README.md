@@ -16,7 +16,7 @@ Starryとは『Rubyで作る奇妙なプログラミング言語』で説明さ�
 
 ## Installation
 
-windows binary is [here](https://github.com/inazak/starry/releases) or
+windows binary is [here](https://github.com/inazak/starry/releases)
 
 
 ## How to use
